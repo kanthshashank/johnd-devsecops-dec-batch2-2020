@@ -309,23 +309,219 @@ Pause VS Unpause
 IP - 13.232.180.186
 Ussername - centos
 Password - centos123
+====================================
+
+
+When we "RUN" "Docker Image", 
+			it create one USER using USER NS
+			- One Copy of Image get mounted to USER - using MNT NS
+			- ONE PID get attached to USER		- using PID NS
+			- ONE NETwork get attached to USER	- using NET NS	
 
 
 
+ 85  clear
+   86  clear
+   87  docker ps
+   88  docker ps -a
+   89  ps -eaf | grep docker
+   90  ps -eaf | grep containerd
+   91  which docker
+   92  docker images
+   93  docker create --name=rajesh1 jenkins/jenkins
+   94  docker ps
+   95  docker ps -a
+   96  clear
+   97  ps -eaf | grep containerd
+   98  ps -eaf | grep docker
+   99  docker ps -a
+  100  docker start ed145bf7be40
+  101  ps -eaf | grep docker
+  102  ps -eaf | grep containerd
+  103  docker create --name=rajesh2 jenkins/jenkins
+  104  docker start rajesh2
+  105  ps -eaf | grep containerd
+  106  clear
+  107  docker ps
+  108  ps -eaf | grep containerd
+  109  clear
+  110  ps
+  111  ps -eaf | grep 8587
+  112  ps -eaf | grep 8585
+  113  ps -eaf | grep 7451
+  114  ps -eaf | grep 7443
+  115  ps -eaf | grep 2670
+  116  ps -eaf | grep 1236
+  117  clear
+  118  ps -eaf
+  119  clear
+  120  ls
+  121  ps -eaf | grep containerd
+  122  ps -eaf | grep 19959
+  123  clear
+  124  df -kh
+  125  cd /var/lib/docker/overlay2/08aec5c4402cea58d326b1473385cdfcbeb4781ae1155efa623d24ff233a8a69/merged
+  126  ls
+  127  pwd
+  128  cd /
+  129  ls
+  130  clear
+  131  df -kh
+  132  docker ps
+  133  docker exec  7b75e911ff77 ls /
+  134  docker exec  ed145bf7be40 ls /
+  135  docker exec  ed145bf7be40 ls /tmp
+  136  docker exec  7b75e911ff77 ls /tmp
+  137  docker exec  7b75e911ff77 touch /tmp/rajesh.txt
+  138  docker exec  7b75e911ff77 ls /tmp
+  139  docker exec  ed145bf7be40 ls /tmp
+  140  clear
+  141  ps -eaf
+  142  clear
+  143  docker ps
+  144  docker exec 7b75e911ff77 ps -eaf
+  145  docker exec ed145bf7be40 ps -eaf
+  146  clear
+  147  docker ps
+  148  docker inspect 7b75e911ff77 | grep -i ip
+  149  docker inspect ed145bf7be40 | grep -i ip
+  150  ping 172.17.0.2
+  151  ping 172.17.0.3
+  152  clear
+  153  history
+
+====================================================================
+How to use container?
+--------------------------------------
+PHYSCIAL Server		Virtial Server		Container 
+is running		is running		is running
+as long as 		as long as		as long as  	
+PID 1 is running	PID 1 is running	PID 1 is running
+
+PID 1 is SYSTEMD	PID 1 is SYSTEMD	PID 1 can be anything				
+						java
+						pytghon
+						bash
+						mysql
+	
+---------------------------------------------------------------------------------
+run
+---------------
+pull -> create -> start -> Attached to container or become a container
+
+---------------------------------------------------------------------------------
+run -d 
+---------------
+pull -> create -> start -> DO NOT Attached to container or DO NOT  become a container
+
+
+ 154  clear
+  155  docker ps
+  156  docker exec 7b75e911ff77 ps -eaf
+  157  docker exec 7b75e911ff77 kill 1
+  158  docker ps
+  159  docker ps -a
+  160  clear
+  161  ps -eaf
+  162  clear
+  163  docker ps
+  164  clear
+  165  ps
+  166  docker run jenkins/jenkins
+  167  docker ps
+  168  history
+  169  docker ps -a
+  170  clear
+  171  docker run -d jenkins/jenkins
+  172  docker run -d jenkins/jenkins
+  173  docker run -d jenkins/jenkins
+  174  docker run -d jenkins/jenkins
+  175  docker ps
+  176  docker run ubuntu
+  177  deocker ps
+  178  docker ps
+  179  docker ps -a
+  180  ls
+  181  ls
+  182  ls
+  183  top
+  184  clear
+  185  docker ps -a
+  186  docker run -it -d ubuntu /bin/bash
+  187  docker ps
+  188  docker run -it ubuntu /bin/bash
+  189  docker ps
+  190  clear
+  191  history
+
+
+How to use container?
+===========================================
+1. Go inside
+	using /bin/bash
+exec
+	it would execute any executable inside a container
+	using -it and /bin/bash - u can inside it.
+attach
+	it get attached to PID1
+
+ 192  clear
+  193  docker ps
+  194  docker exec 0cd49b0de420 ls
+  195  clear
+  196  docker exec -it 0cd49b0de420 /bin/bash
+  197  docker exec -it 0cd49b0de420 /bin/bash
+  198  docker ps
+  199  clear
+  200  docker ps
+  201  docker attach 4d7da74d97a3
+  202  clear
+  203  docker ps
+  204  docker attach 77a1afec638e
+  205  clear
+  206  docker ps
+  207  docker attach 3b9e7edeec1a
+  208  docker ps
+  209  clear
+  210  history
+
+
+2. Access from outside...using IP Address.
+
+How to come out of the container without existing?
+control +p+q
+
+docker run -d jenkins/jenkins
+docker run -d -p 8080:8080 jenkins/jenkins
+docker run -d -p 8090:8080 jenkins/jenkins
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+ 211  clear
+  212  docker ps
+  213  docker inspect 58e080d0451d | grep -i ip
+  214  ping 172.17.0.4
+  215  clear
+  216  curl http://172.17.0.4:8080
+  217  clerar
+  218  clear
+  219  docker ps
+  220  080d0451d   jenkins/jenkins   "/sbin/tini -- /usr/…"   22 minutes ago   Up 22 minutes   8080/tcp, 50000/tcp   crazy_mendeleev
+  221  ea44bdd99558   jenkins/jenkins   "/sbin/tini -- /usr/…"   22 minutes ago   Up 22 minutes   8080/tcp, 50000/tcp   jovial_leakey
+  222  docker stop $(docker ps -a -q)
+  223  docker rm $(docker ps -a -q)
+  224  clear
+  225  docker ps -a
+  226  docker run -d -p 8080:8080 jenkins
+  227  lear
+  228  clear
+  229  docker run -d -p 8080:8080 jenkins/jenkins
+  230  docker run -d -p 8090:8080 jenkins/jenkins
+  231  docker ps
+  232  clear
+  233  docker run -d jenkins/jenkins
+  234  docker ps
+  235  history
 
 
 
