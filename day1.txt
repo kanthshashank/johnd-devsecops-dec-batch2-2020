@@ -522,6 +522,149 @@ docker run -d -p 8090:8080 jenkins/jenkins
   233  docker run -d jenkins/jenkins
   234  docker ps
   235  history
+========================================================================
+========================================================================
+SonarQube
+===========================
+What is SonarQube?
+--------------------------
+	Quality management tool.
+	Release
+		Community - FREE - Opensource
+		Dev
+		Enterprise
+		Data Center
+	Written in Java
+		Pre - java 11
+	By SonarSource
+	Plugins Concept
+
+	Quality 
+	------------
+	Code Quality	=  FOCUS
+	Test Quality
+
+How to get Quality Reports of the Code?
+	- Peers Code Review	
+	- Static Code Review	= FOCUS
+		- Code would Review Code
+	AKA	- Rule would review code
+	AKA	- Rule(S) would review code
+	AKA	- Tool would review code
+	AKA	- SCA Tools would review code 
+			==> Generate Reports
+				     Contains
+					- What is the issues
+					- Who made it?
+					- When it was introduced?
+					- How to fix it?
+					- Where is that line? 
+				OF SINGLE file
+				Of whole Package
+	SCA tools
+	https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis
+
+Why do we need it?
+----------------------------
+	Quality Mangement tool
+	
+
+SonarQube Arch
+===============================
+Scanner	==Runs on==> 	SourceCode	==Reports==>Server
+
+Server
+	Dashboard
+		Rules
+		Projects
+		Issues
+		Quality Profile
+		Gate
+		Admin
+		Search - ElasticSearch
+
+ 	Backend
+		H2 - Trials
+		MSSQL
+		Oracle
+		Postgres
+
+Scanner
+	Download
+	Config
+https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
+
+Source Code
+https://github.com/devopsschool-demo-labs-projects/java-sonarqube-helloworld-src
+	Which Project
+	Which Dir?
+	Version
+	
+
+======================================================
+How to install it? Linux
+===========================
+15.206.209.58
+centos
+
+=============================================================
+=============================================================
+How to install SonarQube in Linux?
+=========================================
+Step 1 - Install JAVA
+$ sudo yum list installed
+$ sudo yum list installed | grep java
+$ sudo yum remove <<all java7&8>
+$ yum install java-11-openjdk-devel
+$ systemctl stop firewalld
+$ systemctl disable firewalld
+
+Step 2 - Download and Install and run SonarQube server
+$ yum install wget unzip -y
+$ su centos	# Sonarqube must be started with normal user
+$ cd
+$ wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.4.1.35646.zip
+$ unzip sonarqube-8.4.1.35646.zip
+$ mv sonarqube-8.4.1.35646 sonarqube-server
+$ cd sonarqube-server/bin/linux-x86-64
+$ ./sonar.sh start
+$ ./sonar.sh status
+
+
+[centos@ip-172-31-9-53 sonarqube-server]$ ls -1
+bin		START-STOP
+conf		Config file for soq
+COPYING
+data		h2 data file
+elasticsearch	es
+extensions	plugins
+lib		sonarq lib
+logs
+temp
+web		web
+
+
+
+http://15.206.209.58:9000/
+admin
+admin
+
+
+
+https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-windows.zip
+
+
+SonarQube Arch
+===============================
+Scanner	==Runs on ==> 	SourceCode	==Reports==>Server
+
+C:\tools\sonarqube\scanner\sonar-scanner-cli-4.5.0.2216-windows\bin\sonar-scanner.bat
+on
+SRC code
+
+
+
+
 
 
 
