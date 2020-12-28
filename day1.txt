@@ -1,0 +1,337 @@
+1234567890
+======================
+Rajesh Kumar
+------
+Shardha
+-------------------------
+4 Days - DevSecOps
+-------------------------
+Agenda
+-----------------------
+Docker		HALF
+SonarQube	HALF
+
+Jenkins		ONE
+
+Selenium	HALF
+Jmeter		HALF
+
+Jacoco		HALF
+DevSecOps 	- THEoRY	HALF
+===================
+Start - 9 30 AM IST
+End - 6:00 PM IST
+-------------------
+Lunch - 1 - 2 PM IST
+COFFEE
+	15-20 mins
+	11 AM 
+	3.30 PM IST
+==============================
+Demo + LAB 
+===============
+AWS - 
+===========================================================================
+===========================================================================
+Vmware
+--------------
+	vm mgmt tool
+
+
+What is Docker?
+----------------
+	Its a Platform
+	Aka Docker Engine
+	Container mgmt tool
+	Release
+		Docker Community
+		Docker Enterprise	https://www.devopsschool.com/blog/
+	Verrsion
+		20.X
+	Written in Golang
+	Written by Soloman - in 2013
+
+	tool	
+	-------------
+	- Saving Cost	- For running APPS/Software in DataCenter/SDLC Cycle
+	- Saving time	- For Deployment/Rollback of APPS/Software
+	- Impr* Quality - Software Quality
+	==================	
+		
+	mgmt
+
+	
+	Container????
+	Container is running your APP with complete inde* resources required.
+	
+	Container is 
+			ONE USER by USER NS
+				attached with
+					ONE PID
+					ONE MNT (ROOT + USER + APP Fileststem)
+					ONE NET
+
+
+===========================================================================
+What are the components we need to RUN one APP/Software? ANy APP?
+What are the resources we need to RUN one APP/Software? ANy APP?
+---------------------------------------------------------------------------
+HARDWARE(CPU+RAM+STORAGE)
+	--- OS
+		Kernal
+Type of Kernal Programs	AKA Namespace
+			
+						NEED	ALLOWED in OS	ALLOWED By KERNAL
+- USER	by USER NS				1	MULTIPLE	MULTIPLE			
+- RUNTIMELIB-APP(FileSystem)MNT	by MNT NS	1	1		MULTIPLE
+- PID by PID NS					1	1		MULTIPLE	
+- NETWORK - PORT by NET NS			1	1		MULTIPLE
+
+FileSystem
+--------------
+collection of dirs/files FOR one Specific purpose.
+
+APP -> Tomcat -> JAVA -> OS
+Team -> Rootfs ->
+------------------------------
+	FileSystem
+
+Types of FileSystem
+------------------------------
+BOOT FileSystem	AKA Kernal	(LINUX + WINDOWS)
+ROOT FileSystem	"/"		RHEL - CENTOS - UB - FEDORA - SUSE - KALi
+USER FileSystem	
+APP FileSystem
+
+TO Run any ONE APP
+---------------------------
+BOOT + ROOT + USER + APP
+1 	1 	1 	1
+================================
+		OS
+Kernal
+The kernel is a computer program at the core of a computer's operating system that has complete control over everything in the system.
+
+cgroups
+cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.
+---cgroups allocate CPU+RAM to PID.
+
+==================================================
+PC - Personal Computing
+========================================================================
+========================================================================
+Evolution of Computing
+-----------------------------------------------------------------------
+				For running ApP
+---------------------------------------------------------------------------
+
+Before 2000			2000+			2020
+		Internet
+Physcial Server			Virtual Servers		Containers	
+
+=========================================================================
+Docker Architecture
+Docker Components
+Docker Installation
+Docker Lifecycle - Work with Containers
+- DEMO and LAB
+Docker Lifecycle - Using Containers
+- DEMO and LAB
+	
+====================================
+Docker Architecture
+
+Human -> Docker Client ---REST-> Docker Deamon -> ContainerD -> Kernal
+	===================================
+			Docker Engine
+
+
+Docker Components
+=======================================
+Docker Engine	 - As discussed.
+
+Docker Images
+		Collections of Filesystem(S)
+		- ROOT FileSystem	"/"		RHEL - CENTOS - UB - FEDORA - SUSE - KALi
+		- USER FileSystem			tomcat	
+		- APP FileSystem			jdk + tomcat
+
+		One Copy of Image - Get Mounted to Each container.
+
+Docker Registry
+		Contains Repository
+		- Image filesystems(s)
+		
+		Public
+			hub.docker.com
+			google registry
+		Pvt
+			artifactory
+			nexus
+
+Docker Container
+	
+When we "RUN" "Docker Image", 
+			it create one USER using USER NS
+			- One Copy of Image get mounted to USER - using MNT NS
+			- ONE PID get attached to USER		- using PID NS
+			- ONE NETwork get attached to USER	- using NET NS	
+
+=====================================================
+Docker Installation
+=====================================================
+13.232.180.186
+centos
+key - 
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+  1  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    2  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    3  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    4  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    5  sudo yum install -y docker-ce
+    6  sudo yum install docker-ce
+    7  docker -v
+    8  sudo systemctl enable docker
+    9  sudo systemctl start docker
+   10  docker info
+   11  clear
+   12  docker version
+   13  clear
+   14  docker -v
+   15  docker info
+   16  clear
+   17  ls
+   18  docker help
+   19  clear
+   20  ls
+   21  history
+
+Docker Lifecycle - Work with Containers
+- DEMO and LAB
+======================================================
+
+VMs Lifecycle 
+------------------------------------------------------------
+Create -> Start -> Stop -> Start -> Restart -> Pause -> Unpuase -> kill -> Remove
+
+Container Lifecycle 
+------------------------------------------------------------
+Create -> Start -> Stop -> Start -> Restart -> Pause -> Unpuase -> kill -> Remove
+
+
+What App you want to run???
+		rootfs			ubuntu
+		rootfs + app		ubuntu + jdk +  jenkins		
+========================
+ 14  docker -v
+   15  docker info
+   16  clear
+   17  ls
+   18  docker help
+   19  clear
+   20  ls
+   21  history
+   22  clear
+   23  docker images
+   24  docker ps
+   25  docker ps -a
+   26  docker pull jenkins/jenkins
+   27  clear
+   28  dcoker images
+   29  docker images
+   30  docker create --name rajesh1 jenkins/jenkins
+   31  docker create --name rajesh2 jenkins/jenkins
+   32  docker create --name rajesh3 jenkins/jenkins
+   33  docker ps
+   34  docker ps -a
+   35  clear
+   36  docker ps -a
+   37  docker start 6cd5d7fc37a6
+   38  docker ps -a
+   39  docker start 27576c86ad86
+   40  clear
+   41  docker ps -a
+   42  docker stop 6cd5d7fc37a6
+   43  docker ps -a
+   44  docker create jenkins/jenkins
+   45  docker ps -a
+   46  docker start 2937eac8cb82
+   47  clear
+   48  docker ps -a
+   49  docker stop 27576c86ad86
+   50  docker ps -a
+   51  clear
+   52  docker start 27576c86ad86
+   53  docker ps -a
+   54  docker restart 2937eac8cb82
+   55  docker ps -a
+   56  clear
+   57  docker pause 2937eac8cb82
+   58  docker ps -a
+   59  docker unpause 2937eac8cb82
+   60  docker ps -a
+   61  docker kill 19d037104d62
+   62  clear
+   63  docker ps -a
+   64  docker kill 2937eac8cb82
+   65  docker ps -a
+   66  docker
+   67  clear
+   68  docker ps -a
+   69  docker rm 27576c86ad86
+   70  docker rm 2937eac8cb82
+   71  docker ps -a
+   72  clear
+   73  docker ps -a
+   74  docker start 6cd5d7fc37a6 19d037104d62
+   75  docker ps -a
+   76  clear
+   77  docker ps
+   78  docker stop 6cd5d7fc37a6 27576c86ad86 19d037104d62
+   79  docker ps
+   80  docker rm 6cd5d7fc37a6 27576c86ad86 19d037104d62
+   81  docker ps -a
+   82  clear
+   83  docker ps -a
+   84  history
+
+=================================================
+QA Assignment
+----------
+STOP vs KILL
+Pause VS Unpause
+----------
+	HINTS - docker help
+		google.com
+
+
+IP - 13.232.180.186
+Ussername - centos
+Password - centos123
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
