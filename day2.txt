@@ -19,3 +19,129 @@ on
 SRC code
 
 ===============15 mins========
+=============================================================
+http://65.0.71.71:8080/
+devops
+devops123
+=============================================================
+What is Jenkins?
+	CI tool
+	Continouns Integration
+	Release
+		Jenkins 		=== Focus
+				Open Source
+				Free
+				Most popular
+		Enterprise Jenkins
+		Jenkins X
+		Blue Ocean
+	Based on Plugins
+	Written in Java
+	Version
+		2.X
+
+What is Continouns Integration?
+-----------------------------------
+- Auto Build + Auto Testing
+-----------------------------------
+	Imm Feedback
+
+
+Continounsly Integrate all SDLC Process
+Continounsly Integrate all Team
+Continounsly Integrate all Tools
+------------------------------------------			
+				CI
+				- imm feedback for everything.
+
+PLAN -> Code -> Analyze -> Build -> UT -> Package -> Archive -> Dep2Qa -> AT -> CC -
+-------------------------------------------------------------------------------------
+Jira -> Git -> SonarQube -> Maven -> Junit -> Jar -> Artifactory -> Ansible -> Selenium -> Jacoco
+=============================================================================================
+					Jenkins	
+						Dashboard
+						Scheduling
+						Integrate
+						Imm feedback						
+
+
+							IF all passed - Release
+							If one failed - repeat
+
+==============================================
+Other tools?
+- Teamcity 
+- Bamboo
+- UBuild
+- Travis Ci
+- Gitlab
+
+=======================
+How to install it?
+- Java
+- jenkins
+==============================================================
+
+Architecute of Jenkins
+========================
+Jenkins Server
+	Dashboard - 8080
+	Agent for Build etc.
+
+
+===================================================================
+===================================================================
+Q1. What is your tech?
+		JAVA			version		Installed in Agent?
+		DOTnet			version		Installed in Agent?
+		PYTHOn			version		Installed in Agent?
+
+Q2. Where is the Source Code?
+		git			userbranch = path - user - password - Tools is installed in Agent?
+		perforce		branch = path - user - password - Tools is installed in Agent?
+		tfs			branch = path - user - password - Tools is installed in Agent?
+		svn			branch = path - user - password - Tools is installed in Agent?
+		
+Q3. When you want this build to be triggers?
+		hourly
+
+Q4. What is your builder?
+	ant		which target?			- Tools is installed in Agent?	
+	maven		which goal?			- Tools is installed in Agent?
+	gradle		which task?			- Tools is installed in Agent?
+	msbuild		which target?			- Tools is installed in Agent?
+	bash		which script or commands	- Tools is installed in Agent?	
+	batch		which script or commands	- Tools is installed in Agent?
+Q5. Where you want to send Feedback?
+		Email.
+--------------------------------------
+Q1. What is your tech?
+		java
+
+Q2. Where is the Source Code?
+https://github.com/devops-school/helloworld-java-maven
+
+
+Q3. When you want this build to be triggers?
+		every 15mins.
+
+Q4. What is your builder?
+		maven - 
+			compile - compile
+			test - test
+			package - package
+			verify - ver
+			install - install
+https://www.youtube.com/thedevopsschool
+Q5. Where you want to send Feedback?
+		rajesh@devopsschool.com
+
+
+=========================================
+Lab 1 - Create a folder and Create a job with Maven
+
+Lab 2 - Create a another job using Ant
+https://github.com/scmgalaxy/helloworld-java-ant
+
+
+
