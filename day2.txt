@@ -143,5 +143,38 @@ Lab 1 - Create a folder and Create a job with Maven
 Lab 2 - Create a another job using Ant
 https://github.com/scmgalaxy/helloworld-java-ant
 
+====================================================================
+https://www.devopsschool.com/blog/how-to-schedule-and-trigger-a-jenkins-job-automatically/
+
+How to Schedule a job in Jenkins?
+=======================================
+1. At Fixed time					= Build periodically
+2. At Fixed time but Build only when SCM Change		= Poll SCM
+3. Build this if Some other job got build.		= Build after other projects are built
+4. Build using Script from Remote Location		= Trigger builds remotely (e.g., from scripts)
+5. Build this job when someone Push code into Github	= GitHub hook trigger for GITScm polling
+https://www.devopsschool.com/blog/how-to-build-when-a-change-is-pushed-to-github-in-jenkins/
+
+6. Build Another Job after this job
+	Post-build Actions >> Build another Project
+
+
+curl --user devops:11297098fe162b7d079644855e2eafa82e -X POST http://65.0.71.71:8080/job/RajeshKumar/job/job3/build?delay=0sec
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
